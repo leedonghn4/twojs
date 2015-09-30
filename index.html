@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Two.js Tests</title>
+    <link rel="stylesheet" href="../third-party/qunit/qunit.css">
+  </head>
+  <body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <div id="main"></div>
+    <div class="scripts">
+      <script src="two.js"></script>
+      <script src="./suite/core.js"></script>
+      <script src="./suite/svg.js"></script>
+      <script src="./suite/canvas.js"></script>
+      <script src="./suite/webgl.js"></script>
+      <script src="./suite/svg-interpreter.js"></script>
+      <script src="./suite/bounding-box.js"></script>
+      <script>
+      var el = document.getElementById("main"),
+      two = new Two({ 
+        fullscreen: true,
+        type: Two.Types.webgl
+      });
+ 
+      two.appendTo(el);
+
+      for(var i = 0 ; i <250; i++)
+      {
+        for (var j = 0 ; j <41; j++) 
+        {
+          var rect = two.makeRectangle(i*10+10, j*10+10, 8, 8);
+          rect.fill = "blue";
+          rect.opacity = 1.0;
+          rect.noStroke();
+        }
+      }
+ 
+      two.update();
+      </script>
+    </div>
+  </body>
+</html>
